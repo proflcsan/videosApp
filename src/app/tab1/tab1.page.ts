@@ -43,6 +43,27 @@ export class Tab1Page {
       cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9NvYyM8H6d5KAVGqpyFV9YPO5cU.jpg',
       generos: ['Comédia', 'Família', 'Animação'],
       pagina: '/tom-jerry'
+    },
+
+    {
+      nome: 'Godzilla vs. Kong (2021)',
+      lancamento:'01/04/2021',
+      duracao: '1h 53m',
+      classificacao: 81,
+      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/wllzjZxg4ynlAm5xmOICJ2uHOPJ.jpg',
+      generos:['Ação', 'Ficção', 'científica'],
+      pagina: '/godzilla-kong'
+    },
+
+    {
+      nome: 'Coringa (2019)',
+      lancamento:'03/10/2019',
+      duracao: '2h 2m',
+      classificacao: 82,
+      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xLxgVxFWvb9hhUyCDDXxRPPnFck.jpg',
+      generos:['Crime', 'Thriller',' Drama'],
+      pagina: '/coringa'
+
     }
   ];
 
