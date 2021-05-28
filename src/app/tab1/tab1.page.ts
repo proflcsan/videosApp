@@ -1,7 +1,9 @@
+import { DadosService } from './../services/dados.service';
 import { IFilme } from '../models/IFilme.model';
 import { Component } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { ToastController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab1',
@@ -10,38 +12,50 @@ import { ToastController } from '@ionic/angular';
 })
 export class Tab1Page {
 
-  titulo= 'Videos';
+  titulo = 'Videos';
 
-  listaVideos: IFilme[]=[
+  listaVideos: IFilme[] = [
     {
-      nome:'Mortal Kombat (2021)',
-      lancamento:'15/04/2021',
-      duracao:'1h 50m',
-      classificacao:76,
-      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/w8BVC3qrCWCiTHRz4Rft12dtQF0.jpg',
-      generos:['Ação','Fantasia','Aventura']
+      nome: 'Mortal Kombat (2021)',
+      lancamento: '15/04/2021',
+      duracao: '1h 50m',
+      classificacao: 76,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/w8BVC3qrCWCiTHRz4Rft12dtQF0.jpg',
+      generos: ['Ação', 'Fantasia', 'Aventura'],
+      pagina: '/mortal-kombat'
     },
 
     {
-      nome:'Liga da Justiça de Zack Snyder (2021)',
-      lancamento:'18/03/2021',
-      duracao:'4h 2m',
-      classificacao:76,
-      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ArWn6gCi61b3b3hclD2L0LOk66k.jpg',
-      generos:['Ação', 'Aventura',' Fantasia', 'Ficção científica']
+      nome: 'Liga da Justiça de Zack Snyder (2021)',
+      lancamento: '18/03/2021',
+      duracao: '4h 2m',
+      classificacao: 76,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ArWn6gCi61b3b3hclD2L0LOk66k.jpg',
+      generos: ['Ação', 'Aventura', ' Fantasia', 'Ficção científica'],
+      pagina: '/liga-justica'
     },
 
     {
-      nome:'Tom & Jerry - O Filme (2021)',
-      lancamento:'11/02/2021',
-      duracao:'1h 41m',
-      classificacao:76,
-      cartaz:'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9NvYyM8H6d5KAVGqpyFV9YPO5cU.jpg',
-      generos:['Comédia', 'Família', 'Animação']
+      nome: 'Tom & Jerry - O Filme (2021)',
+      lancamento: '11/02/2021',
+      duracao: '1h 41m',
+      classificacao: 76,
+      cartaz: 'https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9NvYyM8H6d5KAVGqpyFV9YPO5cU.jpg',
+      generos: ['Comédia', 'Família', 'Animação'],
+      pagina: '/tom-jerry'
     }
   ];
 
-  constructor(public alertController: AlertController,public toastController: ToastController) {}
+  constructor(
+    public alertController: AlertController,
+    public toastController: ToastController,
+    public dadosService: DadosService,
+    public route: Router) { }
+
+  exibirFilme(filme: IFilme) {
+    this.dadosService.guardarDados('filme', filme);
+    this.route.navigateByUrl('/dados-filme');
+  }
 
   async exibirAlertaFavorito() {
     const alert = await this.alertController.create({
@@ -72,7 +86,7 @@ export class Tab1Page {
     const toast = await this.toastController.create({
       message: 'Filme adicionados aos favoritos.',
       duration: 2000,
-      color:'success'
+      color: 'success'
     });
     toast.present();
   }
