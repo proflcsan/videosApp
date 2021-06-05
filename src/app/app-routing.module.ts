@@ -3,33 +3,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   {
+    path:'',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
-    path: 'mortal-kombat',
-    loadChildren: () => import('./filmes/mortal-kombat/mortal-kombat.module').then( m => m.MortalKombatPageModule)
-  },
-  {
-    path: 'liga-justica',
-    loadChildren: () => import('./filmes/liga-justica/liga-justica.module').then( m => m.LigaJusticaPageModule)
-  },
-  {
-    path: 'tom-jerry',
-    loadChildren: () => import('./filmes/tom-jerry/tom-jerry.module').then( m => m.TomJerryPageModule)
   },
   {
     path: 'dados-filme',
     loadChildren: () => import('./dados-filme/dados-filme.module').then( m => m.DadosFilmePageModule)
   },
   {
-    path: 'godzilla-kong',
-    loadChildren: () => import('./filmes/godzilla-kong/godzilla-kong.module').then( m => m.GodzillaKongPageModule)
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
-  {
-    path: 'coringa',
-    loadChildren: () => import('./filmes/coringa/coringa.module').then( m => m.CoringaPageModule)
-  }
+
+
 ];
 @NgModule({
   imports: [
