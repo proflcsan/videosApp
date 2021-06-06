@@ -1,6 +1,9 @@
-import { IFilmeApi } from './../models/IFilmeAPI.model';
+import { GeneroService } from './../services/genero.service';
+import { FilmeService } from './../services/filme.service';
+import { IFilmeApi,  } from './../models/IFilmeApi.model';
 import { DadosService } from './../services/dados.service';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-dados-filme',
@@ -13,12 +16,21 @@ export class DadosFilmePage implements OnInit {
 
   generos: string[] = [];
 
-  constructor(public dadosServive: DadosService) { }
+  constructor(
+    public dadosService: DadosService,
+    public filmeService: FilmeService,
+    public generoService: GeneroService
+    ) { }
 
   ngOnInit() {
-    this.filme = this.dadosServive.pegarDados('filme');
-    this.generos = this.dadosServive.pegarDados('generos');
-    console.log('Filme Enviado',this.filme);
+    this.filme = this.dadosService.pegarDados('filme');
+    this.generos = this.dadosService.pegarDados('generos');
+
+    this.generoService.buscarGeneros('movie').subscribe(dados =>{
+      dados.genres.forEach(genero => {
+        this.generoService[genero.id] = genero.name;
+      });
+    });
   }
 
 }

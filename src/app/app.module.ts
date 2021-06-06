@@ -22,7 +22,7 @@ registerLocaleData(localePt);
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
@@ -31,4 +31,4 @@ registerLocaleData(localePt);
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

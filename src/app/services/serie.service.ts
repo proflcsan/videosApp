@@ -1,6 +1,6 @@
+import { IListaSeries } from './../models/ISerieApi.models';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IListaFilmes } from '../models/IFilmeApi.model';
 import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
@@ -8,7 +8,7 @@ import { map, catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class FilmeService {
+export class SerieService {
 
   lingua = "pt-br";
   regiao = "BR";
@@ -18,10 +18,10 @@ export class FilmeService {
 
   constructor(private http: HttpClient, public toastController: ToastController) { }
 
-  buscarFilmes(busca: string): Observable<IListaFilmes>{
-    const url = `${this.apiUrl}search/movie${this.key}&language=${this.lingua}&region=${this.regiao}&query=${busca}`;
+  buscarSeries(busca: string): Observable<IListaSeries>{
+    const url = `${this.apiUrl}search/tv${this.key}&language=${this.lingua}&query=${busca}`;
 
-    return this.http.get<IListaFilmes>(url).pipe(
+    return this.http.get<IListaSeries>(url).pipe(
       map(retorno => retorno),
       catchError(erro => this.exibirErro(erro))
     );

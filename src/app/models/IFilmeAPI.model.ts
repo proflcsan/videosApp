@@ -16,9 +16,11 @@ export interface IFilmeApi {
   vote_average?: number;
 }
 
-export interface IListaFilmes{
+
+
+export interface IListaFilmes {
   page: number;
   results: IFilmeApi[];
   total_results: number;
-  total_pages:  number;
+  total_pages: number;
 }

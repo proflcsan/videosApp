@@ -1,3 +1,4 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -7,10 +8,10 @@ export class DadosService {
 
   private dados: any = [];
 
-  constructor() { }
+  constructor() {}
 
   guardarDados(index: string, dados: any): boolean{
-    if (index) {
+    if(index){
       this.dados[index] = dados;
       return true;
     } else {
@@ -19,14 +20,17 @@ export class DadosService {
   }
 
   pegarDados(index: string): any {
-    if (index) {
+    if(index){
       return this.dados[index];
     } else {
       return null;
     }
   }
 
-  deletarDados(index: string): boolean{
-    return delete this.dados[index];
+  deletarDados(index: string): boolean {
+    if(index){
+      return delete this.dados[index];
+    }
   }
+
 }
